@@ -8,35 +8,35 @@ let theme = createTheme({
     h1: {
       fontSize: 64,
       fontWeight: 700,
-      lineHeight: 78,
+      lineHeight: '78px',
       color: '#FFF',
       [breakpoints.down('sm')]: {
         fontSize: 40,
-        lineHeight: 49,
+        lineHeight: '49px',
       },
     },
     h2: {
       fontSize: 36,
       fontWeight: 600,
-      lineHeight: 44,
+      lineHeight: '44px',
       color: '#FFF',
       [breakpoints.down('sm')]: {
         fontSize: 24,
-        lineHeight: 29,
+        lineHeight: '29px',
       },
     },
     body1: {
       fontSize: 16,
       fontWeight: 400,
       fontStyle: 'normal',
-      lineHeight: 32,
+      lineHeight: '32px',
       color: '#FFF',
     },
     body2: {
       fontSize: 16,
       fontWeight: 600,
       fontStyle: 'normal',
-      lineHeight: 20,
+      lineHeight: '20px',
       color: '#FFF',
     },
   },
@@ -44,6 +44,7 @@ let theme = createTheme({
     primary: {
       main: '#D6F379',
       dark: '#222',
+      light: '#FFF',
     },
     secondary: {
       main: '#E3513D',
