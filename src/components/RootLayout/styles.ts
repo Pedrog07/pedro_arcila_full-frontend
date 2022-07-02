@@ -5,21 +5,22 @@ export const useStyles = makeStyles((theme: Theme) => ({
   rootContainer: {
     background: theme.palette.primary.dark,
     width: '100%',
+    height: '100vh',
     display: 'flex',
     flexDirection: 'column',
-    overflowY: 'visible',
+    overflowY: 'auto',
     '&::-webkit-scrollbar': {
-      width: 3,
+      width: 7,
     },
     '&::-webkit-scrollbar-track': {
       background: 'none',
     },
     '&::-webkit-scrollbar-thumb': {
-      background: 'blue',
-      borderRadius: 5,
+      background: theme.palette.primary.light,
+      borderRadius: 3,
     },
     '&::-webkit-scrollbar-thumb:hover': {
-      background: 'yellow',
+      background: theme.palette.primary.main,
     },
   },
   mainContainer: {

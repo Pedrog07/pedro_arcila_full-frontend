@@ -19,9 +19,9 @@ const Home = () => {
         </SvgIcon>
       </div>
       <div className={classes.rightSide}>
-        <Typography variant="h1">
+        <Typography className={classes.title} variant="h1">
           Disfruta de la{' '}
-          <Typography variant="h1" color="primary">
+          <Typography component="span" variant="h1" color="primary">
             mejor música
           </Typography>
         </Typography>

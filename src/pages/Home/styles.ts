@@ -3,17 +3,21 @@ import { makeStyles } from '@mui/styles'
 
 export const useStyles = makeStyles((theme: Theme) => ({
   homeContainer: {
-    padding: '148px 88px 0',
+    marginTop: 148,
+    padding: '0 88px',
     display: 'flex',
     width: '100%',
+    height: '100%',
     justifyContent: 'center',
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
-      padding: '103px 88px 0',
+      justifyContent: 'flex-start',
+      marginTop: 103,
     },
     [theme.breakpoints.down('sm')]: {
-      alignItems: 'center',
-      padding: '62px 43px 0',
+      alignItems: 'flex-start',
+      padding: '0 43px',
+      marginTop: 62,
     },
   },
   diagonalArrowIcon: {
@@ -31,21 +35,33 @@ export const useStyles = makeStyles((theme: Theme) => ({
       '&[class$="-root"]': {
         width: 222,
         height: 222,
+        marginLeft: 27,
       },
     },
   },
   leftSide: {
     display: 'flex',
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: 0,
+      marginTop: 74,
+    },
   },
   rightSide: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
     marginLeft: 79,
+    paddingBottom: 30,
     [theme.breakpoints.down('md')]: {
       marginLeft: 0,
       marginTop: 74,
     },
+    [theme.breakpoints.down('sm')]: {
+      marginTop: 27,
+    },
+  },
+  title: {
+    maxWidth: 597,
   },
   bodyText: {
     '&[class$="-root"]': {
