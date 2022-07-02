@@ -17,4 +17,19 @@ export const generalIcons = {
       />
     </>
   ),
+  diagonalArrow: (
+    <path
+      d="M464 0H93.5V101.5H291.5L0 393L71.5 464.5L363.5 172.5V388.5H464V0Z"
+      fill="#D6F379"
+    />
+  ),
+  rightArrow: (
+    <path
+      d="M10 1L17 8L10 15M1 8H17H1Z"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
 }
