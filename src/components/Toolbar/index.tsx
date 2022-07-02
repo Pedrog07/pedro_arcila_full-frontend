@@ -1,18 +1,24 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { SvgIcon, Typography, useMediaQuery } from '@mui/material'
-import { useSelector } from 'react-redux'
-import { selectors } from 'store/selectors'
 import clsx from 'clsx'
 import theme from 'theme'
 import { generalIcons } from 'utils/icons'
 import { useStyles } from './styles'
+import { useDispatch } from 'react-redux'
+import { actions } from 'store/actions'
 
-const Toolbar = () => {
+const Toolbar = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
   const classes = useStyles()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const isTablet = useMediaQuery(theme.breakpoints.down('md'))
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-  const { isAuthenticated } = useSelector(selectors.authSelector)
 
+  const handleLogout = () => {
+    dispatch(actions.logout())
+    navigate('/')
+  }
   return (
     <div className={classes.toolbarContainer}>
       {isAuthenticated && (
@@ -32,7 +38,10 @@ const Toolbar = () => {
           </Typography>
           <div className={clsx(classes.separator, classes.mgl)} />
           {isMobile ? (
-            <span className={clsx(classes.toolbarControl, classes.mgl)}>
+            <span
+              onClick={handleLogout}
+              className={clsx(classes.toolbarControl, classes.mgl)}
+            >
               <SvgIcon
                 className={classes.logoutIcon}
                 width="24"
@@ -46,6 +55,8 @@ const Toolbar = () => {
             <Typography
               className={clsx(classes.toolbarControl, classes.mgl)}
               variant="body2"
+              component="span"
+              onClick={handleLogout}
             >
               Cerrar sesión
             </Typography>

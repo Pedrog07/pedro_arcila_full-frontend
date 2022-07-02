@@ -1,1 +1,5 @@
-export { default as auth } from './auth'
+import auth from './auth'
+
+export const reducer = {
+  auth,
+}
