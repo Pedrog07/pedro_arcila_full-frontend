@@ -62,6 +62,36 @@ theme = createTheme(theme, {
           height: 44,
           borderRadius: 24,
           padding: 24,
+          fontSize: 16,
+          lineHeight: '20px',
+          fontWeight: 600,
+          fontFamily: 'Montserrat',
+          textTransform: 'none',
+          '&:hover': {
+            backgroundColor: theme.palette.primary.main,
+            //boxShadow: 'unset',
+          },
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: 24,
+          padding: '8px 8px 8px 24px',
+          height: 62,
+          background: '#FFF',
+          '& > input': {
+            fontFamily: 'Montserrat',
+            fontSize: 16,
+            fontWeight: 600,
+            lineHeight: '20px',
+            padding: 0,
+            color: '#000',
+          },
+          '& > fieldset': {
+            border: 'none',
+          },
         },
       },
     },

@@ -17,5 +17,9 @@ const store = configureStore({
     getDefaultMiddleware({ serializableCheck: false }),
 })
 
+export const AppSelector = (selector: (state: any) => any) =>
+  selector(store.getState())
+export const AppDispatch = store.dispatch
+
 export const persistor = persistStore(store)
 export default store
