@@ -1,5 +1,7 @@
 import axios, { Method } from 'axios'
 import { toast } from 'react-toastify'
+import { AppSelector, AppDispatch } from 'store'
+import { actions } from 'store/actions'
 
 const baseURL = process.env.REACT_APP_API_URL as string
 
@@ -9,8 +11,8 @@ const service = axios.create({
 })
 
 service.interceptors.response.use(
-  (response) => response,
-  (error) => Promise.reject(error)
+  (response) => response.data,
+  (error) => Promise.reject(error?.response?.data || error)
 )
 
 interface ServiceParams {
@@ -25,14 +27,13 @@ const fetchService = async ({
   path,
   method = 'GET',
   data = null,
-  token,
   baseURL,
-}: ServiceParams) => {
+}: ServiceParams): Promise<any> => {
   try {
     const headers: any = {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
     }
+    const token = AppSelector((state) => state.auth.token)
     if (token) headers['Authorization'] = `Bearer ${token}`
 
     const response = await service({
@@ -42,10 +43,21 @@ const fetchService = async ({
       baseURL,
       headers,
     })
-    return response
+
+    return response || true
   } catch (error: any) {
-    // here should handle when the token is expired to update states
-    toast.error(error.message, { style: { background: '#E3513D' } })
+    if (
+      error?.error?.status === 401 &&
+      error?.error?.message === 'The access token expired'
+    ) {
+      setTimeout(() => {
+        AppDispatch(actions.logout())
+        window.location.reload()
+      }, 2000)
+    }
+    toast.error(error?.error?.message || error?.message, {
+      style: { background: '#E3513D', color: '#FFF' },
+    })
   }
 }
 
