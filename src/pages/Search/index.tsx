@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { TextField, Typography, Button } from '@mui/material'
 import { useSelector } from 'react-redux'
-import { ArtistAlbums } from 'components'
+import { Artists } from 'components'
 import { searchArtists } from 'service'
 import { selectors } from 'store/selectors'
 import { useStyles } from './styles'
@@ -9,13 +9,13 @@ import { useStyles } from './styles'
 const Search = () => {
   const [artistName, setArtistName] = useState('')
   const classes = useStyles()
-  const { offset, limit } = useSelector(selectors.artistsSelector)
+  const { limit } = useSelector(selectors.artistsSelector)
 
   const handleChangeInput = (e: any) => {
     setArtistName(e.target.value)
   }
-  const handleSearchArtist = async () => {
-    await searchArtists(artistName, limit, offset)
+  const handleSearchArtist = async (artist: string, offset = 0) => {
+    await searchArtists(artist, limit, offset)
   }
   return (
     <div className={classes.searchContainer}>
@@ -39,7 +39,10 @@ const Search = () => {
         InputProps={{
           endAdornment: (
             <Button
-              onClick={handleSearchArtist}
+              onClick={() => {
+                handleSearchArtist(artistName)
+              }}
+              disabled={!artistName}
               variant="contained"
               color="primary"
             >
@@ -48,7 +51,10 @@ const Search = () => {
           ),
         }}
       />
-      <ArtistAlbums />
+      <Artists
+        artistName={artistName}
+        handleSearchArtist={handleSearchArtist}
+      />
     </div>
   )
 }

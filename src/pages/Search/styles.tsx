@@ -6,10 +6,11 @@ export const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
+    height: 'fit-content',
     alignItems: 'center',
-    padding: '0 120px',
+    padding: '0 120px 30px',
     [theme.breakpoints.down('sm')]: {
-      padding: '0 26px',
+      padding: '0 26px 30px',
     },
   },
   title: {

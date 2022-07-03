@@ -16,6 +16,9 @@ const artistsSlice = createSlice({
   name: 'artists',
   initialState,
   reducers: {
+    getArtistsInit: (state) => {
+      state.artists.fetching = true
+    },
     getArtistsCompleted: (state, { payload }) => {
       const { artists } = payload
       state.artists = artists

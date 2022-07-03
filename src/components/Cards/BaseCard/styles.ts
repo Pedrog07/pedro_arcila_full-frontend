@@ -24,6 +24,16 @@ export const useStyles = makeStyles<Theme, { highlightOnHover?: boolean }>(
       width: '100%',
       borderRadius: 24,
     },
+    imageWrapper: {
+      display: 'flex',
+      width: '100%',
+      maxHeight: 241,
+      borderRadius: 24,
+      background: '#00000080',
+      overflowY: 'hidden',
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+    },
     cardTitle: {
       textAlign: 'left',
       '&[class$="-root"]': {

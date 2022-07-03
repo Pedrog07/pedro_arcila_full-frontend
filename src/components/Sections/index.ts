@@ -1,1 +1,1 @@
-export { default as ArtistAlbums } from './ArtistAlbums/index'
+export { default as Artists } from './Artists'

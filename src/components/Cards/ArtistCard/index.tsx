@@ -4,7 +4,6 @@ import BaseCard, { BaseCardProps } from '../BaseCard'
 
 type ArtistCardProps = BaseCardProps &
   Partial<{
-    followers: number
     footer: React.ReactNode
   }>
 const ArtistCard = (props: ArtistCardProps) => {
