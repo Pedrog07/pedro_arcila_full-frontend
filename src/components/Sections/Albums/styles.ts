@@ -2,16 +2,6 @@ import { Theme } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 export const useStyles = makeStyles((theme: Theme) => ({
-  cardFooterText: {
-    '&[class$="-root"]': {
-      marginTop: 24,
-    },
-  },
-  cardFooterButton: {
-    '&[class$="-root"]': {
-      marginTop: 24,
-    },
-  },
   paginationRoot: {
     margin: '20px 0',
     '& button, & div': {
@@ -25,14 +15,24 @@ export const useStyles = makeStyles((theme: Theme) => ({
   searchLink: {
     cursor: 'pointer',
   },
-  mgt: {
-    '&[class$="-root"]': {
-      marginTop: 100,
-    },
-    [theme.breakpoints.down('md')]: {
-      '&[class$="-root"]': {
-        marginTop: 84,
-      },
+  albumCardWrapper: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      justifyContent: 'center',
     },
   },
 }))
+
+export const sx = {
+  cardFooterText: {
+    marginTop: '24px',
+  },
+  cardFooterButton: {
+    marginTop: '24px',
+    maxWidth: 184,
+  },
+  mgt: {
+    marginTop: { xs: '84px', md: '100px' },
+    justifyContent: { md: 'center' },
+  },
+}

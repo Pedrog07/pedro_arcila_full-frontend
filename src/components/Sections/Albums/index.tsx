@@ -13,7 +13,7 @@ import { BaseCard } from 'components'
 import { removeAlbum } from 'service'
 import theme from 'theme'
 import { selectors } from 'store/selectors'
-import { useStyles } from './styles'
+import { useStyles, sx } from './styles'
 
 const Albums = ({
   handleSearchMyAlbums,
@@ -39,30 +39,31 @@ const Albums = ({
   return (
     <>
       {fetching ? (
-        <Grid className={classes.mgt} container justifyContent="center">
+        <Grid sx={sx.mgt} container justifyContent="center">
           <CircularProgress color="primary" size={60} />
         </Grid>
       ) : (
-        <Grid className={classes.mgt} container>
+        <Grid sx={sx.mgt} container>
           {list.length ? (
             list.map((album: any, index: number) => (
-              <Grid key={index} item xs={12} md={6} lg={3}>
+              <Grid
+                key={index}
+                className={classes.albumCardWrapper}
+                item
+                xs={12}
+                md={6}
+                lg={3}
+              >
                 <BaseCard
                   name={album.name}
                   imgUrl={album.images[1]?.url}
                   footer={
                     <>
-                      <Typography
-                        className={classes.cardFooterText}
-                        variant="body2"
-                      >
+                      <Typography sx={sx.cardFooterText} variant="body2">
                         Publicado: {album.release_date}
                       </Typography>
                       <Button
-                        className={classes.cardFooterButton}
-                        style={{
-                          maxWidth: 184,
-                        }}
+                        sx={sx.cardFooterButton}
                         color="secondary"
                         variant="contained"
                         onClick={() => {

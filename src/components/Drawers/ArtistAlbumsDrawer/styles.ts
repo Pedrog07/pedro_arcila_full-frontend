@@ -82,60 +82,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: '50%',
     width: '100%',
   },
-  artistTitle: {
-    '&[class$="-root"]': {
-      marginTop: 33,
-    },
-    [theme.breakpoints.down(700)]: {
-      '&[class$="-root"]': {
-        marginTop: 0,
-      },
-    },
-  },
-  artistText: {
-    '&[class$="-root"]': {
-      marginTop: 32,
-    },
-    [theme.breakpoints.down('md')]: {
-      '&[class$="-root"]': {
-        marginTop: 61,
-      },
-    },
-  },
-  albumsContainer: {
-    marginTop: 119,
-    flexDirection: 'column',
-    [theme.breakpoints.down('md')]: {
-      '&[class$="-root"]': {
-        marginTop: 44,
-      },
-    },
-    [theme.breakpoints.down(700)]: {
-      '&[class$="-root"]': {
-        marginTop: 85,
-      },
-    },
-  },
-  albumsText: {
-    '&[class$="-root"]': {
-      marginLeft: 20,
-    },
-  },
-  cardFooterText: {
-    '&[class$="-root"]': {
-      marginTop: 24,
-    },
-    [theme.breakpoints.down(700)]: {
-      '&[class$="-root"]': {
-        marginTop: 11,
-      },
-    },
-  },
-  cardFooterButton: {
-    '&[class$="-root"]': {
-      marginTop: 24,
-    },
-  },
   paginationRoot: {
     margin: '20px 0',
     '& button, & div': {
@@ -147,3 +93,25 @@ export const useStyles = makeStyles((theme: Theme) => ({
     },
   },
 }))
+
+export const sx = {
+  artistTitle: {
+    marginTop: { xs: 0, sm: '33px' },
+  },
+  artistText: {
+    marginTop: { xs: '61px', md: '32px' },
+  },
+  albumsContainer: {
+    marginTop: { xs: '85px', sm: '44px', md: '119px' },
+    flexDirection: 'column',
+  },
+  albumsText: {
+    marginLeft: '20px',
+  },
+  cardFooterText: {
+    marginTop: { xs: '11px', sm: '24px' },
+  },
+  cardFooterButton: {
+    marginTop: '24px',
+  },
+}
