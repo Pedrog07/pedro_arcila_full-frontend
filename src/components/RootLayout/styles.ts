@@ -28,4 +28,12 @@ export const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     maxHeight: 'calc(100% - 87px)',
   },
+  toast: {
+    '&[class*="Toastify__toast"]': {
+      background: theme.palette.primary.main,
+      color: '#000',
+      borderRadius: 24,
+      fontFamily: 'Montserrat',
+    },
+  },
 }))

@@ -25,9 +25,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <Toolbar isAuthenticated={isAuthenticated} />
       <div className={classes.mainContainer}>{children}</div>
       <ToastContainer
+        toastClassName={classes.toast}
         hideProgressBar
         newestOnTop
-        autoClose={10000}
+        autoClose={2500}
         closeButton={false}
         icon={false}
         theme="colored"

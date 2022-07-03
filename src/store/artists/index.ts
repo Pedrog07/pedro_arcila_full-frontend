@@ -13,7 +13,7 @@ const initialState = {
     fetching: false,
     offset: 0,
     total: 0,
-    limit: 10,
+    limit: 8,
     list: [],
   },
 }
@@ -35,6 +35,9 @@ const artistsSlice = createSlice({
     getSelectedArtistAlbumsCompleted: (state, { payload }) => {
       const { selectedArtistAlbums } = payload
       state.selectedArtistAlbums = selectedArtistAlbums
+    },
+    resetSelectedArtistAlbums: (state) => {
+      state.selectedArtistAlbums = initialState.selectedArtistAlbums
     },
   },
 })

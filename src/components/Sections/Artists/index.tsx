@@ -6,12 +6,13 @@ import {
   Pagination,
   useMediaQuery,
 } from '@mui/material'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { BaseCard, ArtistAlbumsDrawer } from 'components'
 import { selectors } from 'store/selectors'
 import theme from 'theme'
 import { getSelectedArtistAlbums } from 'service'
 import { useStyles } from './styles'
+import { actions } from 'store/actions'
 
 const Artists = ({
   handleSearchArtist,
@@ -26,10 +27,11 @@ const Artists = ({
   const { list, total, limit, offset, fetching } = useSelector(
     selectors.artistsSelector
   )
+  const dispatch = useDispatch()
   const selectedArtistAlbums = useSelector(
     selectors.selectedArtistAlbumsSelector
   )
-  console.log(selectedArtistAlbums)
+
   return (
     <>
       <Grid
@@ -95,6 +97,7 @@ const Artists = ({
         open={showAlbumsModal}
         onClose={() => {
           setShowAlbumsModal(false)
+          dispatch(actions.resetSelectedArtistAlbums())
         }}
       />
     </>
