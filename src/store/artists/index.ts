@@ -29,6 +29,9 @@ const artistsSlice = createSlice({
       const { artists } = payload
       state.artists = artists
     },
+    resetArtists: (state) => {
+      state.artists = initialState.artists
+    },
     getSelectedArtistAlbumsInit: (state) => {
       state.selectedArtistAlbums.fetching = true
     },

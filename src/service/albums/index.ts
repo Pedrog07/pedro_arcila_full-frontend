@@ -51,3 +51,48 @@ export const removeAlbum = async (
     toast.success('El album ha sido removido exitosamente')
   }
 }
+
+export const getMyAlbums = async (
+  limit: number,
+  offset: number,
+  skipLoader?: boolean
+) => {
+  !skipLoader && AppDispatch(actions.getMyAlbumsInit())
+
+  const query = new URLSearchParams()
+  query.set('limit', limit.toString())
+  query.set('offset', offset.toString())
+
+  const response = await fetchService({
+    path: `/me/albums?${query.toString()}`,
+  })
+
+  if (response) {
+    let checks: boolean[] = []
+    if (response.items.length) {
+      checks = await checkSavedAlbums(
+        response.items.map((item: any) => item.album.id)
+      )
+    }
+    AppDispatch(
+      actions.getMyAlbumsCompleted({
+        myAlbums: {
+          list: response.items.map((item: any, index: number) => {
+            const { id, images, name, release_date } = item.album
+            return {
+              id,
+              images,
+              name,
+              release_date,
+              hasSavedAlbum: checks[index],
+            }
+          }),
+          offset,
+          limit,
+          total: response.total,
+          fetching: false,
+        },
+      })
+    )
+  }
+}
