@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   CircularProgress,
   Grid,
@@ -6,11 +6,13 @@ import {
   Pagination,
   useMediaQuery,
 } from '@mui/material'
-import { useSelector } from 'react-redux'
-import { BaseCard } from 'components/Cards'
+import { useDispatch, useSelector } from 'react-redux'
+import { BaseCard, ArtistAlbumsDrawer } from 'components'
 import { selectors } from 'store/selectors'
-import { useStyles } from './styles'
 import theme from 'theme'
+import { getSelectedArtistAlbums } from 'service'
+import { useStyles } from './styles'
+import { actions } from 'store/actions'
 
 const Artists = ({
   handleSearchArtist,
@@ -19,11 +21,17 @@ const Artists = ({
   handleSearchArtist: (artistName: string, offset?: number) => void
   artistName: string
 }) => {
+  const [showAlbumsModal, setShowAlbumsModal] = useState(false)
   const classes = useStyles()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const { list, total, limit, offset, fetching } = useSelector(
     selectors.artistsSelector
   )
+  const dispatch = useDispatch()
+  const selectedArtistAlbums = useSelector(
+    selectors.selectedArtistAlbumsSelector
+  )
+
   return (
     <>
       <Grid
@@ -47,6 +55,14 @@ const Artists = ({
           {list.map((artist, index) => (
             <Grid key={index} item xs={12} md={6} lg={3}>
               <BaseCard
+                onClick={async () => {
+                  await getSelectedArtistAlbums(
+                    artist,
+                    selectedArtistAlbums.limit,
+                    selectedArtistAlbums.offset
+                  )
+                  setShowAlbumsModal(true)
+                }}
                 name={artist.name}
                 imgUrl={artist.images[1]?.url}
                 highlightOnHover
@@ -77,6 +93,13 @@ const Artists = ({
           classes={{ root: classes.paginationRoot }}
         />
       </Grid>
+      <ArtistAlbumsDrawer
+        open={showAlbumsModal}
+        onClose={() => {
+          setShowAlbumsModal(false)
+          dispatch(actions.resetSelectedArtistAlbums())
+        }}
+      />
     </>
   )
 }

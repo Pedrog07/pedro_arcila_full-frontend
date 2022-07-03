@@ -12,7 +12,7 @@ const service = axios.create({
 
 service.interceptors.response.use(
   (response) => response.data,
-  (error) => Promise.reject(error.response.data)
+  (error) => Promise.reject(error?.response?.data || error)
 )
 
 interface ServiceParams {
@@ -44,18 +44,20 @@ const fetchService = async ({
       headers,
     })
 
-    return response
+    return response || true
   } catch (error: any) {
     if (
-      error.error.status === 401 &&
-      error.error.message === 'The access token expired'
+      error?.error?.status === 401 &&
+      error?.error?.message === 'The access token expired'
     ) {
       setTimeout(() => {
         AppDispatch(actions.logout())
         window.location.reload()
       }, 2000)
     }
-    toast.error(error.error.message, { style: { background: '#E3513D' } })
+    toast.error(error?.error?.message || error?.message, {
+      style: { background: '#E3513D', color: '#FFF' },
+    })
   }
 }
 

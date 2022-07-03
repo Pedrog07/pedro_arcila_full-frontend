@@ -4,7 +4,7 @@ import { makeStyles } from '@mui/styles'
 export const useStyles = makeStyles<Theme, { highlightOnHover?: boolean }>(
   (theme: Theme) => ({
     cardContainer: ({ highlightOnHover }) => ({
-      cursor: 'pointer',
+      cursor: highlightOnHover ? 'pointer' : undefined,
       display: 'flex',
       flexDirection: 'column',
       width: '100%',
@@ -27,12 +27,12 @@ export const useStyles = makeStyles<Theme, { highlightOnHover?: boolean }>(
     imageWrapper: {
       display: 'flex',
       width: '100%',
-      maxHeight: 241,
+      height: 241,
       borderRadius: 24,
       background: '#00000080',
-      overflowY: 'hidden',
+      overflow: 'hidden',
       justifyContent: 'center',
-      alignItems: 'flex-start',
+      alignItems: 'center',
     },
     cardTitle: {
       textAlign: 'left',

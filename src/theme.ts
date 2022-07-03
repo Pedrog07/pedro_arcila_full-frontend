@@ -68,8 +68,12 @@ theme = createTheme(theme, {
           fontFamily: 'Montserrat',
           textTransform: 'none',
           '&:hover': {
-            backgroundColor: theme.palette.primary.main,
-            //boxShadow: 'unset',
+            '&[class*="Secondary"]': {
+              backgroundColor: theme.palette.secondary.main,
+            },
+            '&[class*="Primary"]': {
+              backgroundColor: theme.palette.primary.main,
+            },
           },
         },
       },

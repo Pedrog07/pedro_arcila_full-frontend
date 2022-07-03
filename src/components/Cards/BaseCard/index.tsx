@@ -1,12 +1,13 @@
 import React from 'react'
-import { useStyles } from './styles'
 import { Typography } from '@mui/material'
+import { useStyles } from './styles'
 
 export type BaseCardProps = Partial<{
   imgUrl: string
   name: string
   highlightOnHover?: boolean
   footer?: React.ReactNode
+  onClick?: (e: any) => void
 }>
 
 const BaseCard = ({
@@ -14,10 +15,11 @@ const BaseCard = ({
   name,
   highlightOnHover,
   footer,
+  onClick,
 }: BaseCardProps) => {
   const classes = useStyles({ highlightOnHover })
   return (
-    <div className={classes.cardContainer}>
+    <div onClick={onClick} className={classes.cardContainer}>
       <div className={classes.imageWrapper}>
         {imgUrl && (
           <img className={classes.cardImage} alt="card" src={imgUrl} />
