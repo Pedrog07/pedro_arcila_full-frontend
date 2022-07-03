@@ -40,7 +40,12 @@ const Home = () => {
     <div className={classes.homeContainer}>
       <div className={classes.leftSide}>
         <SvgIcon
-          className={classes.diagonalArrowIcon}
+          sx={{
+            width: { md: 464, sm: 318, xs: 222 },
+            height: { md: 465, sm: 318, xs: 222 },
+            marginLeft: { xs: '27px', sm: 0 },
+          }}
+          //className={classes.diagonalArrowIcon}
           width="464"
           height="465"
           viewBox="0 0 464 465"
