@@ -13,29 +13,17 @@ export const useStyles = makeStyles((theme: Theme) => ({
       padding: '0 26px 30px',
     },
   },
+}))
+
+export const sx = {
   title: {
-    maxWidth: 458,
-    textAlign: 'center',
-    '&[class$="-root"]': {
-      marginTop: 106,
-    },
-    [theme.breakpoints.down('sm')]: {
-      '&[class$="-root"]': {
-        marginTop: 45,
-      },
-      maxWidth: 329,
-      textAlign: 'left',
-    },
+    maxWidth: { xs: 329, sm: 458 },
+    textAlign: { xs: 'left', sm: 'center' },
+    marginTop: { xs: '45px', sm: '106px' },
   },
   bodyText: {
-    maxWidth: 458,
-    textAlign: 'center',
-    '&[class$="-root"]': {
-      marginTop: 24,
-    },
-    [theme.breakpoints.down('sm')]: {
-      maxWidth: 329,
-      textAlign: 'left',
-    },
+    maxWidth: { xs: 329, sm: 458 },
+    textAlign: { xs: 'left', sm: 'center' },
+    marginTop: '24px',
   },
-}))
+}

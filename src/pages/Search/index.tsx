@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Artists } from 'components'
 import { searchArtists } from 'service'
 import { selectors } from 'store/selectors'
-import { useStyles } from './styles'
 import { actions } from 'store/actions'
+import { useStyles, sx } from './styles'
 
 const Search = () => {
   const [artistName, setArtistName] = useState('')
@@ -30,13 +30,13 @@ const Search = () => {
 
   return (
     <div className={classes.searchContainer}>
-      <Typography className={classes.title} variant="h1">
+      <Typography sx={sx.title} variant="h1">
         Busca tus{' '}
         <Typography variant="h1" component="span" color="primary">
           artistas
         </Typography>
       </Typography>
-      <Typography className={classes.bodyText} variant="body1">
+      <Typography sx={sx.bodyText} variant="body1">
         Encuentra tus artistas favoritos gracias a nuestro buscador y guarda tus
         álbumes favoritos
       </Typography>
@@ -45,7 +45,7 @@ const Search = () => {
         value={artistName}
         name="artistName"
         placeholder="Buscar artista"
-        className={classes.searchInput}
+        sx={sx.searchInput}
         fullWidth
         InputProps={{
           endAdornment: (

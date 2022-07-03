@@ -11,8 +11,8 @@ import { BaseCard, ArtistAlbumsDrawer } from 'components'
 import { selectors } from 'store/selectors'
 import theme from 'theme'
 import { getSelectedArtistAlbums } from 'service'
-import { useStyles } from './styles'
 import { actions } from 'store/actions'
+import { useStyles, sx } from './styles'
 
 const Artists = ({
   handleSearchArtist,
@@ -34,11 +34,7 @@ const Artists = ({
 
   return (
     <>
-      <Grid
-        className={classes.artistsContainer}
-        container
-        justifyContent="flex-start"
-      >
+      <Grid sx={sx.artistsContainer} container justifyContent="flex-start">
         <Grid item xs={12}>
           <Typography variant="body1">
             Mostrando {list.length} resultados de {total}
@@ -67,10 +63,7 @@ const Artists = ({
                 imgUrl={artist.images[1]?.url}
                 highlightOnHover
                 footer={
-                  <Typography
-                    className={classes.cardFooterText}
-                    variant="body2"
-                  >
+                  <Typography sx={sx.cardFooterText} variant="body2">
                     Followers: {artist.followers.total}
                   </Typography>
                 }

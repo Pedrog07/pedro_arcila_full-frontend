@@ -3,3 +3,5 @@ export const getAccessToken = (url: string) => {
   if (!token) return null
   return token
 }
+
+export const getRoutes = () => ['/', '/search', '/my-albums']

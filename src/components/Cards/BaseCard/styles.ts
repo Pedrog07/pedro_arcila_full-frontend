@@ -34,11 +34,12 @@ export const useStyles = makeStyles<Theme, { highlightOnHover?: boolean }>(
       justifyContent: 'center',
       alignItems: 'center',
     },
-    cardTitle: {
-      textAlign: 'left',
-      '&[class$="-root"]': {
-        marginTop: 24,
-      },
-    },
   })
 )
+
+export const sx = {
+  cardTitle: {
+    textAlign: 'left',
+    marginTop: '24px',
+  },
+}

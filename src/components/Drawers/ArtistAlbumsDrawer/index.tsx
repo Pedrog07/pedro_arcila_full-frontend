@@ -9,12 +9,12 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material'
-import { useStyles } from './styles'
 import { Toolbar, BaseCard } from 'components'
 import { useSelector } from 'react-redux'
 import { selectors } from 'store/selectors'
 import { getSelectedArtistAlbums, removeAlbum, saveAlbum } from 'service'
 import theme from 'theme'
+import { useStyles, sx } from './styles'
 
 const ArtistAlbumsDrawer = (props: DrawerProps) => {
   const classes = useStyles()
@@ -61,15 +61,15 @@ const ArtistAlbumsDrawer = (props: DrawerProps) => {
             </div>
           </div>
           <div className={classes.rightSide}>
-            <Typography className={classes.artistTitle} variant="h1">
+            <Typography sx={sx.artistTitle} variant="h1">
               {selectedArtist?.name}
             </Typography>
-            <Typography className={classes.artistText} variant="body2">
+            <Typography sx={sx.artistText} variant="body2">
               Followers: {selectedArtist?.followers?.total}
             </Typography>
           </div>
         </div>
-        <Grid className={classes.albumsContainer} container>
+        <Grid sx={sx.albumsContainer} container>
           <Typography variant="body1">
             Guarda tus álbumes favoritos de {selectedArtist?.name}
           </Typography>
@@ -87,14 +87,11 @@ const ArtistAlbumsDrawer = (props: DrawerProps) => {
                   imgUrl={album.images[1]?.url}
                   footer={
                     <>
-                      <Typography
-                        className={classes.cardFooterText}
-                        variant="body2"
-                      >
+                      <Typography sx={sx.cardFooterText} variant="body2">
                         Publicado: {album.release_date}
                       </Typography>
                       <Button
-                        className={classes.cardFooterButton}
+                        sx={sx.cardFooterButton}
                         style={{
                           maxWidth: album?.hasSavedAlbum ? 184 : undefined,
                         }}

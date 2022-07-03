@@ -1,6 +1,6 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { useStyles } from './styles'
+import { useStyles, sx } from './styles'
 
 export type BaseCardProps = Partial<{
   imgUrl: string
@@ -25,7 +25,7 @@ const BaseCard = ({
           <img className={classes.cardImage} alt="card" src={imgUrl} />
         )}
       </div>
-      <Typography variant="h2" className={classes.cardTitle}>
+      <Typography variant="h2" sx={sx.cardTitle}>
         {name}
       </Typography>
       {footer}
