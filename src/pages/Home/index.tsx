@@ -5,8 +5,8 @@ import { SvgIcon, Typography } from '@mui/material'
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded'
 import { generalIcons } from 'utils/icons'
 import { getAccessToken } from 'utils'
-import { useStyles } from './styles'
 import { actions } from 'store/actions'
+import { useStyles, sx } from './styles'
 
 const Home = () => {
   const classes = useStyles()
@@ -40,12 +40,7 @@ const Home = () => {
     <div className={classes.homeContainer}>
       <div className={classes.leftSide}>
         <SvgIcon
-          sx={{
-            width: { md: 464, sm: 318, xs: 222 },
-            height: { md: 465, sm: 318, xs: 222 },
-            marginLeft: { xs: '27px', sm: 0 },
-          }}
-          //className={classes.diagonalArrowIcon}
+          sx={sx.diagonalArrowIcon}
           width="464"
           height="465"
           viewBox="0 0 464 465"
@@ -60,13 +55,13 @@ const Home = () => {
             mejor música
           </Typography>
         </Typography>
-        <Typography className={classes.bodyText} variant="body2">
+        <Typography sx={sx.bodyText} variant="body2">
           Accede a tu cuenta para guardar tus albumes favoritos.
         </Typography>
         <Typography
           component="label"
           onClick={handleLogin}
-          className={classes.loginLabel}
+          sx={sx.loginLabel}
           variant="body2"
         >
           Log in con Spotify{' '}

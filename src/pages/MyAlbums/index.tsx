@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { Typography } from '@mui/material'
+import { useSelector } from 'react-redux'
 import { Albums } from 'components'
 import { getMyAlbums } from 'service'
-import { useStyles } from './styles'
-import { useSelector } from 'react-redux'
 import { selectors } from 'store/selectors'
+import { useStyles, sx } from './styles'
 
 const MyAlbums = () => {
   const classes = useStyles()
@@ -24,13 +24,13 @@ const MyAlbums = () => {
 
   return (
     <div className={classes.myAlbumsContainer}>
-      <Typography className={classes.title} variant="h1">
+      <Typography sx={sx.title} variant="h1">
         Mis albumes{' '}
         <Typography variant="h1" component="span" color="primary">
           guardados
         </Typography>
       </Typography>
-      <Typography className={classes.bodyText} variant="body1">
+      <Typography sx={sx.bodyText} variant="body1">
         Disfruta de tu música a un solo click y descube que discos has guardado
         dentro de “mis álbumes”
       </Typography>

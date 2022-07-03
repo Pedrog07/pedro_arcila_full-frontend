@@ -20,25 +20,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
       marginTop: 62,
     },
   },
-  diagonalArrowIcon: {
-    '&[class$="-root"]': {
-      width: 464,
-      height: 465,
-    },
-    [theme.breakpoints.down('md')]: {
-      '&[class$="-root"]': {
-        width: 318,
-        height: 318,
-      },
-    },
-    [theme.breakpoints.down('sm')]: {
-      '&[class$="-root"]': {
-        width: 222,
-        height: 222,
-        marginLeft: 27,
-      },
-    },
-  },
   leftSide: {
     display: 'flex',
     [theme.breakpoints.down('sm')]: {
@@ -63,27 +44,26 @@ export const useStyles = makeStyles((theme: Theme) => ({
   title: {
     maxWidth: 597,
   },
-  bodyText: {
-    '&[class$="-root"]': {
-      fontWeight: 400,
-      marginTop: 39,
-      maxWidth: 347,
-    },
-  },
   rightArrowIcon: {
     marginLeft: 28,
+  },
+}))
+
+export const sx = {
+  diagonalArrowIcon: {
+    width: { xs: 222, sm: 318, md: 464 },
+    height: { xs: 222, sm: 318, md: 465 },
+    marginLeft: { xs: '27px', sm: 0 },
+  },
+  bodyText: {
+    fontWeight: 400,
+    marginTop: '39px',
+    maxWidth: 347,
   },
   loginLabel: {
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
-    '&[class$="-root"]': {
-      marginTop: 108,
-    },
-    [theme.breakpoints.down('sm')]: {
-      '&[class$="-root"]': {
-        marginTop: 40,
-      },
-    },
+    marginTop: { xs: '40px', sm: '108px' },
   },
-}))
+}

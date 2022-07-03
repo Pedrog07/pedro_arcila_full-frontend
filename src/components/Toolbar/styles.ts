@@ -39,27 +39,24 @@ export const useStyles = makeStyles<Theme, { hasCloseIcon?: boolean }>(
       borderColor: '#FFF',
       height: 25,
     },
-    sunIcon: {
-      '&[class$="-root"]': {
-        width: 24,
-        height: 24,
-        color: '#FFF',
-      },
-    },
-    logoutIcon: {
-      '&[class$="-root"]': {
-        width: 24,
-        height: 19,
-        color: '#FFF',
-      },
-    },
-    closeIcon: {
-      '&[class$="-root"]': {
-        width: 30,
-        height: 30,
-        color: '#FFF',
-        marginLeft: 30,
-      },
-    },
   })
 )
+
+export const sx = {
+  sunIcon: {
+    width: 24,
+    height: 24,
+    color: '#FFF',
+  },
+  logoutIcon: {
+    width: 24,
+    height: 19,
+    color: '#FFF',
+  },
+  closeIcon: {
+    width: 30,
+    height: 30,
+    color: '#FFF',
+    marginLeft: '30px',
+  },
+}

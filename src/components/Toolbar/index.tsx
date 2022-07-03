@@ -7,7 +7,7 @@ import theme from 'theme'
 import { generalIcons } from 'utils/icons'
 import { useDispatch } from 'react-redux'
 import { actions } from 'store/actions'
-import { useStyles } from './styles'
+import { useStyles, sx } from './styles'
 
 const Toolbar = ({
   isAuthenticated,
@@ -36,7 +36,7 @@ const Toolbar = ({
           }}
           className={classes.toolbarControl}
         >
-          <CloseRounded className={classes.closeIcon} />
+          <CloseRounded sx={sx.closeIcon} />
         </span>
       )}
       {isAuthenticated && (
@@ -68,7 +68,7 @@ const Toolbar = ({
               className={clsx(classes.toolbarControl, classes.mgl)}
             >
               <SvgIcon
-                className={classes.logoutIcon}
+                sx={sx.logoutIcon}
                 width="24"
                 height="19"
                 viewBox="0 0 24 19"
@@ -91,7 +91,7 @@ const Toolbar = ({
               <div className={clsx(classes.separator, classes.mgl)} />
               <span className={clsx(classes.toolbarControl, classes.mgl)}>
                 <SvgIcon
-                  className={classes.sunIcon}
+                  sx={sx.sunIcon}
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"

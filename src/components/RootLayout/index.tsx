@@ -1,7 +1,7 @@
-import React, { useLayoutEffect } from 'react'
+import React from 'react'
 import { ToastContainer } from 'react-toastify'
 import { useSelector } from 'react-redux'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, Navigate } from 'react-router-dom'
 import Toolbar from 'components/Toolbar'
 import { selectors } from 'store/selectors'
 import { getRoutes } from 'utils'
@@ -9,24 +9,32 @@ import { useStyles } from './styles'
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const classes = useStyles()
-  const navigate = useNavigate()
   const location = useLocation()
   const { isAuthenticated } = useSelector(selectors.authSelector)
 
-  useLayoutEffect(() => {
+  const checkPathname = (
+    isAuthenticated: boolean,
+    pathname: string,
+    children: React.ReactNode
+  ) => {
     if (isAuthenticated) {
-      location.pathname === '/' && navigate('/search')
+      if (pathname === '/') {
+        return <Navigate to="/search" replace />
+      }
     } else {
-      getRoutes().includes(location.pathname) &&
-        location.pathname !== '/' &&
-        navigate('/')
+      if (getRoutes().includes(pathname) && pathname !== '/') {
+        return <Navigate to="/" replace />
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname])
+    return children
+  }
+
   return (
     <div className={classes.rootContainer}>
       <Toolbar isAuthenticated={isAuthenticated} />
-      <div className={classes.mainContainer}>{children}</div>
+      <div className={classes.mainContainer}>
+        {checkPathname(isAuthenticated, location.pathname, children)}
+      </div>
       <ToastContainer
         toastClassName={classes.toast}
         hideProgressBar
