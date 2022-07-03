@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Toolbar from 'components/Toolbar'
 import { selectors } from 'store/selectors'
+import { getRoutes } from 'utils'
 import { useStyles } from './styles'
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
@@ -12,14 +13,16 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation()
   const { isAuthenticated } = useSelector(selectors.authSelector)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isAuthenticated) {
       location.pathname === '/' && navigate('/search')
     } else {
-      location.pathname !== '/' && navigate('/')
+      getRoutes().includes(location.pathname) &&
+        location.pathname !== '/' &&
+        navigate('/')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [location.pathname])
   return (
     <div className={classes.rootContainer}>
       <Toolbar isAuthenticated={isAuthenticated} />
