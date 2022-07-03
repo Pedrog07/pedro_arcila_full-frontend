@@ -6,7 +6,7 @@ import { ThemeProvider } from '@mui/material'
 import store from 'store'
 import theme from 'theme'
 import RootLayout from 'components/RootLayout'
-import { Home, Search } from 'pages'
+import { Home, Search, MyAlbums } from 'pages'
 import { persistor } from 'store'
 
 function App() {
@@ -19,6 +19,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/search" element={<Search />} />
+                <Route path="/my-albums" element={<MyAlbums />} />
+                <Route path="*" element={<>Not found pageee</>} />
               </Routes>
             </RootLayout>
           </ThemeProvider>

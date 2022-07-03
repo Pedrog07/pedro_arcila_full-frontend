@@ -45,6 +45,9 @@ const Toolbar = ({
             className={clsx(classes.toolbarControl, classes.mgl)}
             variant="body2"
             color={location.pathname === '/search' ? 'primary' : undefined}
+            onClick={() => {
+              navigate('/search')
+            }}
           >
             Buscar
           </Typography>
@@ -52,6 +55,9 @@ const Toolbar = ({
             className={clsx(classes.toolbarControl, classes.mgl)}
             variant="body2"
             color={location.pathname === '/my-albums' ? 'primary' : undefined}
+            onClick={() => {
+              navigate('/my-albums')
+            }}
           >
             Mis albumes
           </Typography>

@@ -11,7 +11,7 @@ export const searchArtists = async (
   AppDispatch(actions.getArtistsInit())
   const query = new URLSearchParams()
   query.set('type', 'artist')
-  query.set('q', `artist:${encodeURIComponent(artistName)}`)
+  query.set('q', `artist:${artistName}`)
   query.set('limit', limit.toString())
   query.set('offset', offset.toString())
 

@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { TextField, Typography, Button } from '@mui/material'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Artists } from 'components'
 import { searchArtists } from 'service'
 import { selectors } from 'store/selectors'
 import { useStyles } from './styles'
+import { actions } from 'store/actions'
 
 const Search = () => {
   const [artistName, setArtistName] = useState('')
+  const dispatch = useDispatch()
   const classes = useStyles()
   const { limit } = useSelector(selectors.artistsSelector)
 
@@ -17,6 +19,15 @@ const Search = () => {
   const handleSearchArtist = async (artist: string, offset = 0) => {
     await searchArtists(artist, limit, offset)
   }
+
+  useEffect(() => {
+    return () => {
+      dispatch(actions.resetArtists())
+      dispatch(actions.resetSelectedArtistAlbums())
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <div className={classes.searchContainer}>
       <Typography className={classes.title} variant="h1">
