@@ -24,13 +24,9 @@ export const useStyles = makeStyles<Theme, { hasCloseIcon?: boolean }>(
       display: 'flex',
     },
     mgl: {
-      '&, &[class$="-root"]': {
-        marginLeft: 42,
-      },
+      marginLeft: 42,
       [theme.breakpoints.down('sm')]: {
-        '&, &[class$="-root"]': {
-          marginLeft: 12,
-        },
+        marginLeft: 12,
       },
     },
     separator: {
@@ -43,6 +39,9 @@ export const useStyles = makeStyles<Theme, { hasCloseIcon?: boolean }>(
 )
 
 export const sx = {
+  mgl: {
+    marginLeft: { xs: '12px', sm: '42px' },
+  },
   sunIcon: {
     width: 24,
     height: 24,

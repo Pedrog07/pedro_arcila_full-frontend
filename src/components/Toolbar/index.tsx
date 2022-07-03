@@ -42,7 +42,8 @@ const Toolbar = ({
       {isAuthenticated && (
         <div className={classes.toolbarControlsContainer}>
           <Typography
-            className={clsx(classes.toolbarControl, classes.mgl)}
+            sx={sx.mgl}
+            className={classes.toolbarControl}
             variant="body2"
             color={location.pathname === '/search' ? 'primary' : undefined}
             onClick={() => {
@@ -52,7 +53,8 @@ const Toolbar = ({
             Buscar
           </Typography>
           <Typography
-            className={clsx(classes.toolbarControl, classes.mgl)}
+            sx={sx.mgl}
+            className={classes.toolbarControl}
             variant="body2"
             color={location.pathname === '/my-albums' ? 'primary' : undefined}
             onClick={() => {
@@ -78,7 +80,8 @@ const Toolbar = ({
             </span>
           ) : (
             <Typography
-              className={clsx(classes.toolbarControl, classes.mgl)}
+              sx={sx.mgl}
+              className={classes.toolbarControl}
               variant="body2"
               component="span"
               onClick={handleLogout}

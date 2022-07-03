@@ -33,6 +33,5 @@ export const sx = {
   },
   mgt: {
     marginTop: { xs: '84px', md: '100px' },
-    justifyContent: { md: 'center' },
   },
 }
