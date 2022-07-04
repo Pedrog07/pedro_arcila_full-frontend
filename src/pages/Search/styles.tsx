@@ -30,10 +30,6 @@ export const sx = {
     marginTop: '24px',
   },
   searchInput: {
-    '& > input:-webkit-autofill': {
-      '-webkit-box-shadow': 'none',
-      WebkitTextFillColor: 'inherit',
-    },
     maxWidth: 664,
     marginTop: { xs: '34px', sm: '95px', md: '34px' },
   },
