@@ -57,7 +57,7 @@ export const getMyAlbums = async (
   offset: number,
   skipLoader?: boolean
 ) => {
-  !skipLoader && AppDispatch(actions.getMyAlbumsInit())
+  !skipLoader && AppDispatch(actions.getMyAlbumsInit(true))
 
   const query = new URLSearchParams()
   query.set('limit', limit.toString())
@@ -89,10 +89,12 @@ export const getMyAlbums = async (
           }),
           offset,
           limit,
-          total: response.total,
+          total: response.total > 1000 ? 1000 : response.total,
           fetching: false,
         },
       })
     )
+  } else {
+    AppDispatch(actions.getMyAlbumsInit(false))
   }
 }
