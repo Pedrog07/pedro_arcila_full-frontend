@@ -22,8 +22,8 @@ const artistsSlice = createSlice({
   name: 'artists',
   initialState,
   reducers: {
-    getArtistsInit: (state) => {
-      state.artists.fetching = true
+    getArtistsInit: (state, { payload }) => {
+      state.artists.fetching = payload
     },
     getArtistsCompleted: (state, { payload }) => {
       const { artists } = payload
@@ -32,8 +32,8 @@ const artistsSlice = createSlice({
     resetArtists: (state) => {
       state.artists = initialState.artists
     },
-    getSelectedArtistAlbumsInit: (state) => {
-      state.selectedArtistAlbums.fetching = true
+    getSelectedArtistAlbumsInit: (state, { payload }) => {
+      state.selectedArtistAlbums.fetching = payload
     },
     getSelectedArtistAlbumsCompleted: (state, { payload }) => {
       const { selectedArtistAlbums } = payload
