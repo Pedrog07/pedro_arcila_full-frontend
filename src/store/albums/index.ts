@@ -15,8 +15,8 @@ const albumsSlice = createSlice({
   name: 'albums',
   initialState,
   reducers: {
-    getMyAlbumsInit: (state) => {
-      state.myAlbums.fetching = true
+    getMyAlbumsInit: (state, { payload }) => {
+      state.myAlbums.fetching = payload
     },
     getMyAlbumsCompleted: (state, { payload }) => {
       const { myAlbums } = payload
