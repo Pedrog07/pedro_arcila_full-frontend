@@ -5,7 +5,8 @@ export const useStyles = makeStyles((theme: Theme) => ({
   drawerPaper: {
     '&.MuiPaper-root': {
       height: '100%',
-      backgroundColor: theme.palette.primary.dark,
+      backgroundColor: theme.palette.background.default,
+      backgroundImage: 'unset',
       width: '100%',
       '&::-webkit-scrollbar': {
         width: 7,
@@ -14,7 +15,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
         background: 'none',
       },
       '&::-webkit-scrollbar-thumb': {
-        background: theme.palette.primary.light,
+        background: theme.palette.text.primary,
         borderRadius: 3,
       },
       '&::-webkit-scrollbar-thumb:hover': {
@@ -85,7 +86,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
   paginationRoot: {
     margin: '20px 0',
     '& button, & div': {
-      color: '#fff',
+      color: theme.palette.text.primary,
     },
     '& button.Mui-selected': {
       backgroundColor: 'transparent',

@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles'
 
 export const useStyles = makeStyles((theme: Theme) => ({
   rootContainer: {
-    background: theme.palette.primary.dark,
+    background: theme.palette.background.default,
     width: '100%',
     height: '100vh',
     display: 'flex',

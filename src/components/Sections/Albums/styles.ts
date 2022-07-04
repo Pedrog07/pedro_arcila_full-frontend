@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
   paginationRoot: {
     margin: '20px 0',
     '& button, & div': {
-      color: '#fff',
+      color: theme.palette.text.primary,
     },
     '& button.Mui-selected': {
       backgroundColor: 'transparent',

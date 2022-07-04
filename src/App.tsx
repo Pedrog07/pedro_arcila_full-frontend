@@ -2,10 +2,8 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import { ThemeProvider } from '@mui/material'
 import store from 'store'
-import theme from 'theme'
-import RootLayout from 'components/RootLayout'
+import { RootLayout, Theme } from 'components'
 import { Home, Search, MyAlbums, NotFound } from 'pages'
 import { persistor } from 'store'
 
@@ -14,7 +12,7 @@ function App() {
     <BrowserRouter>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <ThemeProvider theme={theme}>
+          <Theme>
             <RootLayout>
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -23,7 +21,7 @@ function App() {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </RootLayout>
-          </ThemeProvider>
+          </Theme>
         </PersistGate>
       </Provider>
     </BrowserRouter>

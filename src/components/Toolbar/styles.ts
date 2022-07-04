@@ -32,7 +32,7 @@ export const useStyles = makeStyles<Theme, { hasCloseIcon?: boolean }>(
     separator: {
       borderWidth: '0 0 0 1px',
       borderStyle: 'solid',
-      borderColor: '#FFF',
+      borderColor: theme.palette.text.primary,
       height: 25,
     },
   })
@@ -42,20 +42,20 @@ export const sx = {
   mgl: {
     marginLeft: { xs: '12px', sm: '42px' },
   },
-  sunIcon: {
+  sunIcon: (theme: Theme) => ({
     width: 24,
     height: 24,
-    color: '#FFF',
-  },
-  logoutIcon: {
+    color: theme.palette.text.primary,
+  }),
+  logoutIcon: (theme: Theme) => ({
     width: 24,
     height: 19,
-    color: '#FFF',
-  },
-  closeIcon: {
+    color: theme.palette.text.primary,
+  }),
+  closeIcon: (theme: Theme) => ({
     width: 30,
     height: 30,
-    color: '#FFF',
+    color: theme.palette.text.primary,
     marginLeft: '30px',
-  },
+  }),
 }

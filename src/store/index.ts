@@ -6,7 +6,7 @@ import { reducer } from './reducers'
 const persistConfig = {
   key: 'pa_full-frontend',
   storage: localforage,
-  whitelist: ['auth'],
+  whitelist: ['auth', 'application'],
 }
 
 const persistedReducer = persistReducer(persistConfig, combineReducers(reducer))

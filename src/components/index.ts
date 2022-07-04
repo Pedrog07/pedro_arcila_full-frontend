@@ -1,5 +1,6 @@
 export { default as RootLayout } from './RootLayout'
 export { default as Toolbar } from './Toolbar'
+export { default as Theme } from './Theme'
 export * from './Sections'
 export * from './Cards'
 export * from './Drawers'

@@ -20,13 +20,17 @@ const Toolbar = ({
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'))
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   const handleLogout = () => {
     dispatch(actions.logout())
     navigate('/')
   }
+
+  const handleChangeMode = () => {
+    dispatch(actions.switchThemeMode())
+  }
+
   return (
     <div className={classes.toolbarContainer}>
       {onClose && (
@@ -89,21 +93,16 @@ const Toolbar = ({
               Cerrar sesión
             </Typography>
           )}
-          {isTablet && (
-            <>
-              <div className={clsx(classes.separator, classes.mgl)} />
-              <span className={clsx(classes.toolbarControl, classes.mgl)}>
-                <SvgIcon
-                  sx={sx.sunIcon}
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  {generalIcons.sun}
-                </SvgIcon>
-              </span>
-            </>
-          )}
+
+          <div className={clsx(classes.separator, classes.mgl)} />
+          <span
+            onClick={handleChangeMode}
+            className={clsx(classes.toolbarControl, classes.mgl)}
+          >
+            <SvgIcon sx={sx.sunIcon} width="24" height="24" viewBox="0 0 24 24">
+              {generalIcons.sun}
+            </SvgIcon>
+          </span>
         </div>
       )}
     </div>

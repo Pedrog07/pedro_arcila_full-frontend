@@ -1,16 +1,17 @@
 import { createTheme } from '@mui/material/styles'
+import { Theme } from '@mui/material'
 
-export const { breakpoints } = createTheme()
+let theme = createTheme()
 
-let theme = createTheme({
+export const getThemeConfig = (theme: Theme) => ({
   typography: {
     fontFamily: 'Montserrat',
     h1: {
       fontSize: 64,
       fontWeight: 700,
       lineHeight: '78px',
-      color: '#FFF',
-      [breakpoints.down('sm')]: {
+      color: theme.palette.text.primary,
+      [theme.breakpoints.down('sm')]: {
         fontSize: 40,
         lineHeight: '49px',
       },
@@ -19,8 +20,8 @@ let theme = createTheme({
       fontSize: 36,
       fontWeight: 600,
       lineHeight: '44px',
-      color: '#FFF',
-      [breakpoints.down('sm')]: {
+      color: theme.palette.text.primary,
+      [theme.breakpoints.down('sm')]: {
         fontSize: 24,
         lineHeight: '29px',
       },
@@ -30,29 +31,16 @@ let theme = createTheme({
       fontWeight: 400,
       fontStyle: 'normal',
       lineHeight: '32px',
-      color: '#FFF',
+      color: theme.palette.text.primary,
     },
     body2: {
       fontSize: 16,
       fontWeight: 600,
       fontStyle: 'normal',
       lineHeight: '20px',
-      color: '#FFF',
+      color: theme.palette.text.primary,
     },
   },
-  palette: {
-    primary: {
-      main: '#D6F379',
-      dark: '#222222',
-      light: '#FFF',
-    },
-    secondary: {
-      main: '#E3513D',
-    },
-  },
-})
-
-theme = createTheme(theme, {
   components: {
     MuiButton: {
       styleOverrides: {
@@ -67,6 +55,7 @@ theme = createTheme(theme, {
           fontWeight: 600,
           fontFamily: 'Montserrat',
           textTransform: 'none',
+          whiteSpace: 'nowrap',
           '&:hover': {
             '&[class*="Secondary"]': {
               backgroundColor: theme.palette.secondary.main,
@@ -84,7 +73,7 @@ theme = createTheme(theme, {
           borderRadius: 24,
           padding: '8px 8px 8px 24px',
           height: 62,
-          background: '#FFF',
+          background: theme.palette.action.active,
           '& > input': {
             fontFamily: 'Montserrat',
             fontSize: 16,
@@ -102,4 +91,55 @@ theme = createTheme(theme, {
   },
 })
 
+export const getThemePalette = (mode: 'dark' | 'light') => {
+  const palettes = {
+    light: {
+      primary: {
+        main: '#D6F379',
+        dark: '#222222',
+        light: '#FFF',
+      },
+      secondary: {
+        main: '#E3513D',
+      },
+      background: {
+        default: '#FFFFFF',
+      },
+      text: {
+        primary: '#222222',
+        secondary: '#D6F379',
+      },
+      action: {
+        disabledBackground: '#0000004D',
+        disabled: '#000000BF',
+        active: '#00000033',
+      },
+    },
+    dark: {
+      primary: {
+        main: '#D6F379',
+        dark: '#222222',
+        light: '#FFF',
+      },
+      secondary: {
+        main: '#E3513D',
+      },
+      background: {
+        default: '#222222',
+      },
+      text: {
+        primary: '#FFF',
+        secondary: '#D6F379',
+      },
+      action: {
+        disabledBackground: '#0000001A',
+        disabled: '#00000080',
+        active: '#FFF',
+      },
+    },
+  }
+  return createTheme({
+    palette: { ...palettes[mode], mode },
+  })
+}
 export default theme
