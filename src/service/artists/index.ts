@@ -8,7 +8,7 @@ export const searchArtists = async (
   limit: number,
   offset: number
 ) => {
-  AppDispatch(actions.getArtistsInit())
+  AppDispatch(actions.getArtistsInit(true))
   const query = new URLSearchParams()
   query.set('type', 'artist')
   query.set('q', `artist:${artistName}`)
@@ -27,11 +27,13 @@ export const searchArtists = async (
             const { name, followers, images, id } = item
             return { name, followers, images, id }
           }),
-          total: response.artists.total,
+          total: response.artists.total > 1000 ? 1000 : response.artists.total,
           fetching: false,
         },
       })
     )
+  } else {
+    AppDispatch(actions.getArtistsInit(false))
   }
 }
 
@@ -41,7 +43,7 @@ export const getSelectedArtistAlbums = async (
   offset: number,
   skipLoader?: boolean
 ) => {
-  !skipLoader && AppDispatch(actions.getSelectedArtistAlbumsInit())
+  !skipLoader && AppDispatch(actions.getSelectedArtistAlbumsInit(true))
   const query = new URLSearchParams()
   query.set('limit', limit.toString())
   query.set('offset', offset.toString())
@@ -70,10 +72,12 @@ export const getSelectedArtistAlbums = async (
           }),
           offset,
           limit,
-          total: response.total,
+          total: response.total > 1000 ? 1000 : response.total,
           fetching: false,
         },
       })
     )
+  } else {
+    AppDispatch(actions.getSelectedArtistAlbumsInit(false))
   }
 }

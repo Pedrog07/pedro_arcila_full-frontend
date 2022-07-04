@@ -42,6 +42,9 @@ const Search = () => {
       </Typography>
       <TextField
         onChange={handleChangeInput}
+        onKeyUp={(e) => {
+          if (e.key === 'Enter' && artistName) handleSearchArtist(artistName)
+        }}
         value={artistName}
         name="artistName"
         placeholder="Buscar artista"
